@@ -1,0 +1,64 @@
+---
+title: "coursea clearningdata"
+author: "Zoe"
+date: "January 20, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r which propetry has value larger than 100000}
+
+data1<- read.csv("C:/Users/Richard/Downloads/getdata_data_ss06hid.csv")
+head(data1)
+table(data1$VAL)
+#output option24 is 53
+
+```
+
+```{r look at FES }
+data1$FES
+# tidy data only has one variable per column
+```
+
+```{r }
+library(readxl)
+xl<-read_xlsx("C:/Users/Richard/Downloads/NGAP.xlsx")
+#Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:dat
+
+dat<-xl[18:23,7:15]
+sum(dat$zip*dat$xt,na.rm=T)
+```
+
+```{r datatable}
+#DT[,mean(pwgtop15),by=SEX]
+```
+
+WEEK 3 QUIZ
+```{r week3 q1}
+microdata<-read.csv("C:/Users/Richard/Downloads/1.csv")
+#string split names of data containing wgtp, find the 123 colum
+strsplit(names(microdata),"wgtp")[[123]]
+```
+
+```{r week 3 q2 GDP average GDP }
+#remove commas from GDP numbers in millions of dollars and average
+gdp<-read.csv("C:/Users/Richard/Downloads/getdata_data_GDP.csv")
+library(data.table)
+library(dplyr)
+
+#read data and rename variables'names
+gdp <- fread("C:/Users/Richard/Downloads/getdata_data_GDP.csv", skip = 4, nrows = 191, select = c(1, 2, 4, 5), col.names = c("CountryCode", "Rank", "Economy", "Total"))
+gdp$Total <- as.numeric(gsub(",","",gdp$Total),na.rm=TRUE)
+summary(gdp$Total[2:190])
+
+```
+
+```{r q3 Match the data based on the country shortcode. Of the countries for which the end of the fiscal year is available, how many end in June?}
+edu <- fread("C:/Users/Richard/Downloads/getdata_Data_EDSTATS_COUNTRY.csv")
+merged <- merge(gdp, edu, by = 'CountryCode')
+
+```
+
