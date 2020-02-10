@@ -1,6 +1,6 @@
 ---
 title: "coursea clearningdata"
-author: "Zoe"
+author: "ZoeZhu"
 date: "January 20, 2019"
 output: html_document
 ---
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r which propetry has value larger than 100000}
 
-data1<- read.csv("C:/Users/Richard/Downloads/getdata_data_ss06hid.csv")
+data1<- read.csv("getdata_data_ss06hid.csv")
 head(data1)
 table(data1$VAL)
 #output option24 is 53
@@ -25,7 +25,7 @@ data1$FES
 
 ```{r }
 library(readxl)
-xl<-read_xlsx("C:/Users/Richard/Downloads/NGAP.xlsx")
+xl<-read_xlsx("NGAP.xlsx")
 #Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:dat
 
 dat<-xl[18:23,7:15]
@@ -38,7 +38,7 @@ sum(dat$zip*dat$xt,na.rm=T)
 
 WEEK 3 QUIZ
 ```{r week3 q1}
-microdata<-read.csv("C:/Users/Richard/Downloads/1.csv")
+microdata<-read.csv("1.csv")
 #string split names of data containing wgtp, find the 123 colum
 strsplit(names(microdata),"wgtp")[[123]]
 ```
@@ -57,7 +57,7 @@ summary(gdp$Total[2:190])
 ```
 
 ```{r q3 Match the data based on the country shortcode. Of the countries for which the end of the fiscal year is available, how many end in June?}
-edu <- fread("C:/Users/Richard/Downloads/getdata_Data_EDSTATS_COUNTRY.csv")
+edu <- fread("getdata_Data_EDSTATS_COUNTRY.csv")
 merged <- merge(gdp, edu, by = 'CountryCode')
 
 ```
